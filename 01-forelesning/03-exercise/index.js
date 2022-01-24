@@ -14,36 +14,36 @@ var adjektiv6 = prompt("Et nytt adjektiv");
 var adjektiv7 = prompt("Et nytt adjektiv");
 var adjektiv8 = prompt("Et nytt adjektiv");
 
-console.log(
+var story =
   adjektiv1 +
-    " " +
-    "Anne hadde invitert til" +
-    " " +
-    adjektiv2 +
-    " " +
-    "sommergrilling. Først av alle kom" +
-    " " +
-    adjektiv3 +
-    " " +
-    "Petter, han hadde med en flaske" +
-    " " +
-    adjektiv4 +
-    " " +
-    "rødvin. Deretter kom den " +
-    " " +
-    adjektiv5 +
-    " " +
-    "familien Blomkvist, der den" +
-    " " +
-    adjektiv6 +
-    " " +
-    "Geir hadde glemt å fylle bensin på den" +
-    " " +
-    adjektiv7 +
-    " " +
-    "bilen, så de kom fem" +
-    " " +
-    adjektiv8 +
-    " " +
-    "minutter for sent."
-);
+  " " +
+  "Anne hadde invitert til" +
+  " " +
+  adjektiv2 +
+  " " +
+  "sommergrilling. Først av alle kom" +
+  " " +
+  adjektiv3 +
+  " " +
+  "Petter, han hadde med en flaske" +
+  " " +
+  adjektiv4 +
+  " " +
+  "rødvin. Deretter kom den " +
+  " " +
+  adjektiv5 +
+  " " +
+  "familien Blomkvist, der den" +
+  " " +
+  adjektiv6 +
+  " " +
+  "Geir hadde glemt å fylle bensin på den" +
+  " " +
+  adjektiv7 +
+  " " +
+  "bilen, så de kom fem" +
+  " " +
+  adjektiv8 +
+  " " +
+  "minutter for sent.";
+console.log(story);
