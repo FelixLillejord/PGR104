@@ -23,4 +23,5 @@ table {
   display: inline-table;
   background-color: rgba(182, 182, 182, 0.109);
   width: 98%;
+  text-align: center;
 }
