@@ -1,0 +1,26 @@
+body {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  overflow: hidden;
+}
+
+#error {
+  background: red;
+  color: rgb(245, 227, 227);
+  padding: 10px;
+  font-family: monospace;
+  font-weight: bolder;
+  text-align: center;
+}
+
+table {
+  display: inline-table;
+  background-color: rgba(182, 182, 182, 0.109);
+  width: 98%;
+}
