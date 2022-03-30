@@ -1,106 +1,102 @@
-const books = [];
-
 document.querySelector("form").onsubmit = function (event) {
   // Prevents default behavior of form (Page transition)
   event.preventDefault();
+
+  // Hide error
+  document.querySelector("#error").setAttribute("hidden", true);
+
   // Extract data from form
   const data = new FormData(event.target);
-  // Create book object
-  const book = {
-    title: data.get("title"),
-    author: data.get("author"),
-    published: parseInt(data.get("published")),
-    price: parseInt(data.get("price")),
-  };
+  // Get book data
+  const title = data.get("title");
+  const author = data.get("author");
+  const published = parseInt(data.get("published"));
+  const price = parseInt(data.get("price"));
 
-  // check if title is empty
-  if (book.title == "") {
+  // Check if title is empty
+  if (title == "") {
     showError("What is the book called?");
     return;
   }
 
-  // check if author is empty
-  if (book.author == "") {
+  // Check if author is empty
+  if (author == "") {
     showError("Who wrote this damn book?");
     return;
   }
 
-  // check if year of publish is empty
-  if (isNaN(book.published)) {
+  // Check if year of publish is empty
+  if (isNaN(published)) {
     showError("Please fill inn year of publish");
     return;
   }
 
-  // check if book if published after 1990
-  if (book.published < 1990) {
+  // Check if book if published after 1990
+  if (published < 1990) {
     showError("That book is too old!!");
     return;
   }
 
-  // check if book is published before 2022
-  if (book.published > 2022) {
+  // Check if book is published before 2022
+  if (published > 2022) {
     showError("The book cannot be published in the future!");
     return;
   }
 
-  // check if price is empty
-  if (isNaN(book.price)) {
+  // Check if price is empty
+  if (isNaN(price)) {
     showError("Price cannot be empty!");
     return;
   }
 
-  // check if price is not 0 or below
-  if (book.price <= 0) {
+  // Check if price is not 0 or below
+  if (price <= 0) {
     showError("No book is free of charge");
     return;
   }
 
-  // add book to book list
-  books.push(book);
-  // update book list
-  updateBookList();
+  // Create new table row
+  const row = document.createElement("tr");
+
+  // Create title column
+  const titleColumn = document.createElement("td");
+  titleColumn.textContent = title;
+
+  // Create author column
+  const authorColumn = document.createElement("td");
+  authorColumn.textContent = author;
+
+  // Create published column
+  const publishedColumn = document.createElement("td");
+  publishedColumn.textContent = published;
+
+  // Create price column
+  const priceColumn = document.createElement("td");
+  priceColumn.textContent = price;
+
+  // Create remove column
+  const removeColumn = document.createElement("td");
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "🗑";
+  removeButton.onclick = function () {
+    row.remove();
+  };
+  removeColumn.appendChild(removeButton);
+
+  // Add columns to row
+  row.appendChild(titleColumn);
+  row.appendChild(authorColumn);
+  row.appendChild(publishedColumn);
+  row.appendChild(priceColumn);
+  row.appendChild(removeColumn);
+
+  // Add new row to table
+  document.querySelector("table tbody").appendChild(row);
 };
 
+// Show error at top
 function showError(error) {
   const errorElement = document.querySelector("#error");
   errorElement.textContent = error;
   errorElement.removeAttribute("hidden");
-}
-
-function updateBookList() {
-  const bookList = document.querySelector("table tbody");
-  bookList.innerHTML = "";
-  for (let i = 0; i < books.length; i++) {
-    const book = books[i];
-    const row = document.createElement("tr");
-
-    const titleColumn = document.createElement("td");
-    titleColumn.textContent = book.title;
-
-    const authorColumn = document.createElement("td");
-    authorColumn.textContent = book.author;
-
-    const publishedColumn = document.createElement("td");
-    publishedColumn.textContent = book.published;
-
-    const priceColumn = document.createElement("td");
-    priceColumn.textContent = book.price;
-
-    const removeColumn = document.createElement("td");
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "🗑";
-    removeButton.addEventListener("click", function () {
-      books.splice(i, 1);
-      updateBookList();
-    });
-    removeColumn.appendChild(removeButton);
-
-    row.appendChild(titleColumn);
-    row.appendChild(authorColumn);
-    row.appendChild(publishedColumn);
-    row.appendChild(priceColumn);
-    row.appendChild(removeColumn);
-
-    bookList.appendChild(row);
-  }
 }
